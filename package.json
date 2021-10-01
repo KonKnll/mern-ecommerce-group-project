@@ -1,0 +1,89 @@
+{
+  "name": "ecommerce-mern",
+  "version": "1.0.0",
+  "description": "ecommerce fullstack application with MERN stack",
+  "keywords": [
+    "ecommerce",
+    "crud",
+    "mern",
+    "node",
+    "express",
+    "react",
+    "mongodb",
+    "socket.io",
+    "heroku"
+  ],
+  "homepage": "https://github.com/demetreades/ecommerce-mern#readme",
+  "bugs": {
+    "url": "https://github.com/demetreades/ecommerce-mern/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/demetreades/ecommerce-mern.git"
+  },
+  "license": "ISC",
+  "author": "trainero",
+  "main": "server/src/server.js",
+  "scripts": {
+    "start": "node server/src/server",
+    "server": "nodemon start server/src/server",
+    "client": "npm start --prefix client",
+    "pm-start": "pm2 start server/src/server.js --watch",
+    "pm-stop": "pm2 stop server/src/server.js",
+    "monitor": "pm2 monit",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "DATA:import": "node server/src/config/database/seeds",
+    "DATA:delete": "node server/src/config/database/seeds -d",
+    "fresh": "rm -rf node_modules && npm install && cd ./client && rm -rf node_modules && npm install && npm audit fix && cd ..",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "snyk:test": "snyk test"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dayjs": "^1.10.7",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "express-fileupload": "^1.2.1",
+    "express-mongo-sanitize": "^2.1.0",
+    "express-rate-limit": "^5.3.0",
+    "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
+    "http-status-codes": "^2.1.4",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.5",
+    "morgan": "^1.10.0",
+    "pino": "^6.13.1",
+    "slugify": "^1.6.0",
+    "socket.io": "^4.2.0",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-security": "^1.4.0",
+    "nodemon": "^2.0.12",
+    "pino-pretty": "^7.0.1",
+    "pm2": "^5.1.2",
+    "prettier": "^2.3.2",
+    "prettier-eslint": "^13.0.0",
+    "prettier-plugin-packagejson": "^2.2.11",
+    "snyk": "^1.717.0"
+  },
+  "engines": {
+    "node": "14.x",
+    "npm": "7.x"
+  },
+  "proxy": "http://127.0.0.1:5000"
+}
